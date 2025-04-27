@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ather Planning Simulation - Decision Form</title>
+  <title>Ather Strategic Simulation - Quarterly Decision Form</title>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -20,8 +20,8 @@
       padding: 30px;
       margin-top: 40px;
       border-radius: 10px;
-      width: 90%;
-      max-width: 700px;
+      width: 95%;
+      max-width: 800px;
       box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
     }
     h1 {
@@ -77,10 +77,11 @@
 
 <div class="form-container">
   <h1>Ather Strategic Simulation</h1>
-  <p class="description">Submit your quarterly planning decisions below. Your choices will influence your team’s revenue, profitability, and resilience against market scenarios.</p>
+  <p class="description">Plan your quarterly strategy. Your decisions will shape profitability, resilience, and future readiness.</p>
 
   <form action="YOUR_FORM_HANDLER_URL" method="POST">
 
+    <!-- Team and Quarter -->
     <label>Team Name:</label>
     <input type="text" name="team_name" required>
 
@@ -95,88 +96,107 @@
 
     <hr>
 
+    <!-- Volume Planning -->
     <h3>Volume Planning (Units)</h3>
-    <label>450S Volume Plan:</label>
-    <input type="number" name="450s_volume" min="0">
+    <p class="description">Enter planned volumes for each SKU across Tier 1 and Tier 2/3 markets.</p>
 
-    <label>450X Volume Plan:</label>
-    <input type="number" name="450x_volume" min="0">
+    <label>Rizta Base - Tier 1:</label>
+    <input type="number" name="rizta_base_tier1" min="0">
 
-    <label>FutureX Volume Plan:</label>
-    <input type="number" name="futurex_volume" min="0">
+    <label>Rizta Base - Tier 2/3:</label>
+    <input type="number" name="rizta_base_tier2" min="0">
+
+    <label>Rizta Plus - Tier 1:</label>
+    <input type="number" name="rizta_plus_tier1" min="0">
+
+    <label>Rizta Plus - Tier 2/3:</label>
+    <input type="number" name="rizta_plus_tier2" min="0">
+
+    <label>Rizta Fleet - Tier 1:</label>
+    <input type="number" name="rizta_fleet_tier1" min="0">
+
+    <label>Rizta Fleet - Tier 2/3:</label>
+    <input type="number" name="rizta_fleet_tier2" min="0">
+
+    <label>450S - Tier 1:</label>
+    <input type="number" name="450s_tier1" min="0">
+
+    <label>450S - Tier 2/3:</label>
+    <input type="number" name="450s_tier2" min="0">
+
+    <label>450X - Tier 1:</label>
+    <input type="number" name="450x_tier1" min="0">
+
+    <label>450X - Tier 2/3:</label>
+    <input type="number" name="450x_tier2" min="0">
 
     <hr>
 
-    <h3>Product Mix (%)</h3>
-    <p class="description">Ensure the sum of all SKUs is 100%.</p>
-    <label>450S Mix %:</label>
-    <input type="number" name="450s_mix" min="0" max="100">
+    <!-- Price Adjustments -->
+    <h3>Price Adjustment (% Change)</h3>
+    <p class="description">Adjust prices if needed based on market strategy (+ or - %).</p>
 
-    <label>450X Mix %:</label>
-    <input type="number" name="450x_mix" min="0" max="100">
+    <label>Rizta Base Price Adjustment (%):</label>
+    <input type="number" name="rizta_base_price_adj">
 
-    <label>FutureX Mix %:</label>
-    <input type="number" name="futurex_mix" min="0" max="100">
+    <label>Rizta Plus Price Adjustment (%):</label>
+    <input type="number" name="rizta_plus_price_adj">
 
-    <hr>
+    <label>Rizta Fleet Price Adjustment (%):</label>
+    <input type="number" name="rizta_fleet_price_adj">
 
-    <h3>Pricing Strategy</h3>
-    <p class="description">Adjust pricing based on your market assessment (+ or - %).</p>
     <label>450S Price Adjustment (%):</label>
-    <input type="number" name="450s_price_change">
+    <input type="number" name="450s_price_adj">
 
     <label>450X Price Adjustment (%):</label>
-    <input type="number" name="450x_price_change">
-
-    <label>FutureX Price Adjustment (%):</label>
-    <input type="number" name="futurex_price_change">
+    <input type="number" name="450x_price_adj">
 
     <hr>
 
-    <h3>Sales and Channel Spend Allocation (₹ Cr)</h3>
-    <label>Urban Channel:</label>
+    <!-- Sales Spend Allocation -->
+    <h3>Sales Spend Allocation (₹ Cr)</h3>
+    <p class="description">Distribute your spend across different sales channels.</p>
+
+    <label>Urban Channel Spend:</label>
     <input type="number" name="urban_spend" min="0">
 
-    <label>Rural Expansion:</label>
+    <label>Rural Expansion Spend:</label>
     <input type="number" name="rural_spend" min="0">
 
-    <label>Fleet/Corporate Sales:</label>
+    <label>Fleet/Corporate Sales Spend:</label>
     <input type="number" name="fleet_spend" min="0">
 
-    <hr>
-
-    <h3>R&D Focus Areas</h3>
-    <label>Choose Priority Projects:</label><br>
-    <input type="checkbox" name="rd_projects" value="FutureX Launch"> FutureX Launch<br>
-    <input type="checkbox" name="rd_projects" value="BOM Cost Reduction"> BOM Cost Reduction<br>
-    <input type="checkbox" name="rd_projects" value="Software OTA Updates"> Software OTA Updates<br>
-    <input type="checkbox" name="rd_projects" value="Advanced Battery Research"> Advanced Battery Research<br>
+    <label>Digital Campaign Spend:</label>
+    <input type="number" name="digital_spend" min="0">
 
     <hr>
 
-    <h3>Operations and Capacity Setup</h3>
-    <label>Production Shift Setup:</label>
-    <select name="shift_setup">
-      <option value="">Select Setup</option>
-      <option value="Maintain 2 Shifts">Maintain 2 Shifts</option>
-      <option value="Add Night Shift">Add Night Shift</option>
-      <option value="Contract Labor">Add Temporary Contract Labor</option>
-      <option value="Reduce Shifts">Reduce Shifts to Save Cost</option>
+    <!-- R&D Prioritization -->
+    <h3>R&D Projects to Fast-Track (Select up to 2)</h3>
+    <label>Choose Projects:</label><br>
+    <input type="checkbox" name="rd_projects" value="Fleet Scooter Platform"> Fleet Scooter Platform<br>
+    <input type="checkbox" name="rd_projects" value="Battery Thermal System"> Battery Thermal System<br>
+    <input type="checkbox" name="rd_projects" value="OTA Diagnostics"> OTA Diagnostics<br>
+    <input type="checkbox" name="rd_projects" value="Navigation + Voice Assist"> Navigation + Voice Assist<br>
+    <input type="checkbox" name="rd_projects" value="Controller Localization"> Controller Localization<br>
+
+    <hr>
+
+    <!-- Shift Setup -->
+    <h3>Production Shift Planning</h3>
+    <label>Shift Setup Decision:</label>
+    <select name="shift_setup" required>
+      <option value="">Select Shift Plan</option>
+      <option value="Maintain Current Shifts">Maintain Current Shifts</option>
+      <option value="Increase to 1.5x Shifts (Overtime)">Increase to 1.5x Shifts (Overtime)</option>
+      <option value="Decrease to 0.8x Shifts">Decrease to 0.8x Shifts</option>
     </select>
 
     <hr>
 
-    <h3>Project Management Decisions</h3>
-    <label>Project Moves:</label><br>
-    <input type="checkbox" name="project_moves" value="Accelerate FutureX Launch"> Accelerate FutureX Launch<br>
-    <input type="checkbox" name="project_moves" value="Defer Battery R&D"> Defer Battery R&D<br>
-    <input type="checkbox" name="project_moves" value="Maintain Current Roadmap"> Maintain Current Roadmap<br>
-    <input type="checkbox" name="project_moves" value="Accelerate Capacity Expansion"> Accelerate Capacity Expansion<br>
-
-    <hr>
-
+    <!-- Contingency Reserve -->
     <h3>Risk Management</h3>
-    <label>Contingency Reserve (₹ Cr):</label>
+    <label>Contingency Reserve Allocation (₹ Cr):</label>
     <input type="number" name="contingency_reserve" min="0">
 
     <button type="submit" class="submit-btn">Submit Strategic Plan</button>
