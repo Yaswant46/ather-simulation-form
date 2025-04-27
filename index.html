@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ather Planning Simulation - Round Inputs</title>
+  <style>
+    body {
+      font-family: Roboto, sans-serif;
+      margin: 30px;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+    input, select {
+      width: 300px;
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    .submit-btn {
+      background-color: #1976d2;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Ather Planning Simulation - Round Inputs</h1>
+
+<form action="YOUR_FORM_HANDLER_URL" method="POST">
+
+  <label>Team Name:</label>
+  <input type="text" name="team_name" required>
+
+  <label>Quarter:</label>
+  <select name="quarter" required>
+    <option value="Q1">Q1</option>
+    <option value="Q2">Q2</option>
+    <option value="Q3">Q3</option>
+    <option value="Q4">Q4</option>
+  </select>
+
+  <h2>Volume Planning</h2>
+  <label>450S Volume (Units):</label>
+  <input type="number" name="450s_volume" min="0">
+
+  <label>450X Volume (Units):</label>
+  <input type="number" name="450x_volume" min="0">
+
+  <label>FutureX Volume (Units):</label>
+  <input type="number" name="futurex_volume" min="0">
+
+  <h2>Product Mix (%)</h2>
+  <label>450S Mix %:</label>
+  <input type="number" name="450s_mix" min="0" max="100">
+
+  <label>450X Mix %:</label>
+  <input type="number" name="450x_mix" min="0" max="100">
+
+  <label>FutureX Mix %:</label>
+  <input type="number" name="futurex_mix" min="0" max="100">
+
+  <h2>Price Strategy</h2>
+  <label>450S Price Change (%):</label>
+  <input type="number" name="450s_price_change">
+
+  <label>450X Price Change (%):</label>
+  <input type="number" name="450x_price_change">
+
+  <label>FutureX Price Change (%):</label>
+  <input type="number" name="futurex_price_change">
+
+  <h2>Sales Spend Allocation (₹ Cr)</h2>
+  <label>Urban Channel Spend:</label>
+  <input type="number" name="urban_spend" min="0">
+
+  <label>Rural Expansion Spend:</label>
+  <input type="number" name="rural_spend" min="0">
+
+  <label>Fleet/Corporate Spend:</label>
+  <input type="number" name="fleet_spend" min="0">
+
+  <h2>R&D Project Prioritization</h2>
+  <label>Select Key R&D Projects:</label><br>
+  <input type="checkbox" name="rd_projects" value="FutureX Launch"> FutureX Launch<br>
+  <input type="checkbox" name="rd_projects" value="BOM Cost Reduction"> BOM Cost Reduction<br>
+  <input type="checkbox" name="rd_projects" value="Software OTA Updates"> Software OTA Updates<br>
+  <input type="checkbox" name="rd_projects" value="Advanced Battery Research"> Advanced Battery Research<br>
+
+  <h2>Production Setup</h2>
+  <label>Shift Setup:</label>
+  <select name="shift_setup">
+    <option value="Maintain 2 Shifts">Maintain Current 2 Shifts</option>
+    <option value="Add Night Shift">Add Night Shift</option>
+    <option value="Contract Labor">Add Temporary Contract Labor</option>
+    <option value="Reduce Shifts">Reduce Shifts</option>
+  </select>
+
+  <h2>Project Acceleration/Deceleration</h2>
+  <label>Select Actions:</label><br>
+  <input type="checkbox" name="project_moves" value="Accelerate FutureX Launch"> Accelerate FutureX Launch<br>
+  <input type="checkbox" name="project_moves" value="Defer Battery R&D"> Defer Battery R&D<br>
+  <input type="checkbox" name="project_moves" value="Maintain Current Roadmap"> Maintain Current Roadmap<br>
+  <input type="checkbox" name="project_moves" value="Accelerate Capacity Expansion"> Accelerate Capacity Expansion<br>
+
+  <h2>Contingency Reserve</h2>
+  <label>Reserve Funds (₹ Cr):</label>
+  <input type="number" name="contingency_reserve" min="0">
+
+  <br><br>
+  <button type="submit" class="submit-btn">Submit Strategic Plan</button>
+
+</form>
+
+</body>
+</html>
