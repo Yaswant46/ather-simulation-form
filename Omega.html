@@ -2,16 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Team Omega - Ather Simulation Input</title>
+  <title>Plan IQ</title>
   <style>
     body {
-      font-family: Roboto, sans-serif;
-      background-color: #f5f5f5;
+      font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
       margin: 40px;
+      color: #222;
     }
     h1 {
-      color: #222;
+      font-size: 36px;
       text-align: center;
+      margin-bottom: 5px;
+    }
+    h2 {
+      font-size: 20px;
+      text-align: center;
+      font-weight: normal;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #007BFF;
+    }
+    form {
+      max-width: 900px;
+      margin: auto;
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
     }
     table {
       width: 100%;
@@ -19,22 +42,37 @@
       margin-top: 20px;
     }
     th, td {
-      padding: 10px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      border: 1px solid #ddd;
       text-align: center;
+      font-size: 14px;
     }
-    input[type="number"], input[type="text"] {
-      width: 80%;
-      padding: 5px;
+    th {
+      background-color: #f0f0f0;
+      font-weight: 600;
+    }
+    input[type="number"], input[type="text"], select {
+      width: 90%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    label {
+      font-weight: 600;
+    }
+    .section {
+      margin-top: 30px;
     }
     .submit-button {
-      margin-top: 30px;
+      margin-top: 40px;
       text-align: center;
     }
     button {
       background-color: #007BFF;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 25px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -47,16 +85,17 @@
 </head>
 
 <body>
-  <h1>Team Alpha - Simulation Input Form</h1>
+  <h1>Plan IQ</h1>
+  <h2>Ather Scenario Planning Workshop - 29-Apr-2025</h2>
 
-  <form method="POST" action="https://script.google.com/macros/s/AKfycbwzRt5jXASos2-GUAK072CknYrlRWvb1VC6KNBEHURxjQ6d6odlcOBs2ZkCPFhN6bHBIw/exec">
+  <form id="myForm">
 
-    <!-- Hidden Fixed Team Name -->
-    <input type="text" name="teamName" value="Alpha" hidden readonly>
+    <h3>Team Omega Inputs</h3>
 
-    <!-- Quarter Selection -->
-    <div style="margin-top: 20px;">
-      <label for="quarter"><b>Select Quarter:</b></label>
+    <input type="hidden" name="teamName" value="Alpha">
+
+    <div class="section">
+      <label for="quarter"><b>Select Quarter:</b></label><br><br>
       <select name="quarter" required>
         <option value="Q1">Q1</option>
         <option value="Q2">Q2</option>
@@ -65,8 +104,7 @@
       </select>
     </div>
 
-    <!-- Volumes and Pricing Table -->
-    <table>
+    <table class="section">
       <tr>
         <th>SKU</th>
         <th>Volume (Units)</th>
@@ -99,8 +137,7 @@
       </tr>
     </table>
 
-    <!-- Sales Spend and R&D Inputs -->
-    <div style="margin-top: 30px;">
+    <div class="section">
       <label><b>Sales Spend (in ₹ Cr):</b></label><br><br>
       Tier 1 Cities: <input type="number" name="tier1Spend" required><br><br>
       Tier 2/3 Cities: <input type="number" name="tier2Spend" required><br><br>
@@ -108,7 +145,7 @@
       Experience Centers: <input type="number" name="experienceSpend" required><br><br>
     </div>
 
-    <div style="margin-top: 30px;">
+    <div class="section">
       <label><b>R&D Project Prioritization:</b></label><br><br>
       <select name="rdPriority" required>
         <option value="Fleet Scooter">Fleet Scooter</option>
@@ -119,7 +156,7 @@
       </select>
     </div>
 
-    <div style="margin-top: 30px;">
+    <div class="section">
       <label><b>Shift Setup:</b></label><br><br>
       <select name="shiftSetup" required>
         <option value="Maintain Shifts">Maintain Shifts</option>
@@ -128,17 +165,46 @@
       </select>
     </div>
 
-    <div style="margin-top: 30px;">
+    <div class="section">
       <label><b>Contingency Reserve (in ₹ Cr):</b></label><br><br>
       <input type="number" name="contingencyReserve" required>
     </div>
 
-    <!-- Submit Button -->
     <div class="submit-button">
       <button type="submit">Submit Response</button>
     </div>
 
   </form>
+
+  <!-- JavaScript to send JSON -->
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = {};
+
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      fetch('https://script.google.com/macros/s/AKfycbzY-nGiGxr_kz_wg9hxyJZdBnFwYtzc57En1DB1rLIyi2hEmG7FnxOP378c6d7skyQ/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        alert('Form submitted successfully!');
+        document.getElementById('myForm').reset();
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        alert('Failed to submit form.');
+      });
+    });
+  </script>
 
 </body>
 </html>
